@@ -1,0 +1,2 @@
+{{- define "coreai-mcu-email-processor.container" -}}
+{{- end -}}

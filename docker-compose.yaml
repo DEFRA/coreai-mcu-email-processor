@@ -1,0 +1,19 @@
+services:
+  coreai-mcu-email-processor:
+    build:
+      context: .
+      target: production
+    image: coreai-mcu-email-processor
+    container_name: coreai-mcu-email-processor
+    depends_on:
+      - coreai-mcu-email-processor-postgres
+    environment:
+      APPINSIGHTS_CLOUDROLE: coreai-mcu-email-processor-local
+      APPINSIGHTS_CONNECTIONSTRING: ${APPINSIGHTS_CONNECTIONSTRING}
+
+  coreai-mcu-email-processor-postgres:
+    image: postgres:11.4-alpine
+    environment:
+      POSTGRES_DB: coreai-mcu-email-processor
+      POSTGRES_PASSWORD: ppp
+      POSTGRES_USERNAME: postgres
